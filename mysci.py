@@ -1,34 +1,19 @@
-print("Hello, world!")
 
-#Read the data file and look at first 4 lines
-#filename = "data/wxobs20170821.txt"
-#datafile = open(filename, 'r')
-#print(datafile.readline())
-#print(datafile.readline())
-#print(datafile.readline())
-#print(datafile.readline())
-#datafile.close()
+#Initialize my data variable; this is how you create a list
+data = []
 
-#Read entire data file
+#Read and parse the data file
 filename = "data/wxobs20170821.txt"
-datafile = open(filename, 'r')
-data = datafile.read()
-datafile.close()
 
-#DEBUG
-#print all the data
-print(data)
-#print the word data
-print('data')
-
-
-filename = "data/wxobs20170821.txt"
 with open(filename, 'r') as datafile:
-    data = datafile.read()
+
+   # Read the first three lines (header)
+   for _ in range(3):
+       datafile.readline()
+       
+   #Read and parse the rest of the file
+   for line in datafile:
+       datum = line.split()
+       data.append(datum)
 
 #DEBUG
-print(data)
-print(type(data))
-
-#DEBUG
-#print(type(data)); tells you data type
